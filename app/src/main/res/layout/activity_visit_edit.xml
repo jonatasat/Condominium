@@ -89,7 +89,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="420dp">
+        android:layout_marginTop="425dp">
 
         <ImageButton
             android:id="@+id/btnSaveEdit"
@@ -97,7 +97,6 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:background="@color/colorPrimary"
-            android:onClick="saveVisitEdit"
             android:scaleType="fitCenter"
             android:src="@drawable/checkwhite" />
     </LinearLayout>
@@ -105,7 +104,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="495dp">
+        android:layout_marginTop="497dp">
 
         <ImageButton
             android:id="@+id/btnDeleteEdit"
@@ -113,7 +112,6 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:background="@android:color/holo_red_dark"
-            android:onClick="deleteVisitEdit"
             android:scaleType="fitCenter"
             android:src="@drawable/deletewhite" />
     </LinearLayout>

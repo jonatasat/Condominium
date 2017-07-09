@@ -69,20 +69,20 @@ public class DBController {
         return cursor;
     }
 
-    public String updateVisitById(Visit visit){
+    public String updateVisitById(String codigo, String name, String phone, String document, String carplate){
         ContentValues values;
         String where;
         long result = 0;
 
         db = bd.getWritableDatabase();
 
-        where = DBCreate.ID + "=" + visit.getId();
+        where = DBCreate.ID + "=" + codigo;
 
         values = new ContentValues();
-        values.put(DBCreate.NAME, visit.getName());
-        values.put(DBCreate.PHONE, visit.getPhone());
-        values.put(DBCreate.DOCUMENT, visit.getDocument());
-        values.put(DBCreate.CARPLATE, visit.getCarPlate());
+        values.put(DBCreate.NAME, name);
+        values.put(DBCreate.PHONE, phone);
+        values.put(DBCreate.DOCUMENT, document);
+        values.put(DBCreate.CARPLATE, carplate);
 
         result = db.update(DBCreate.TABLE, values, where, null);
         db.close();
@@ -96,10 +96,18 @@ public class DBController {
 
     }
 
-    public void deleteVisit(Visit visit){
-        String where = DBCreate.ID + "=" + visit.getId();
+    public String deleteVisit(String codigo){
+        long result;
+        String where = DBCreate.ID + "=" + codigo;
         db = bd.getReadableDatabase();
-        db.delete(DBCreate.TABLE,where,null);
+        result = db.delete(DBCreate.TABLE,where,null);
         db.close();
+
+        if(result == -1){
+            return "Erro ao remover registro";
+
+        }else{
+            return "Registro removido com sucesso";
+        }
     }
 }
