@@ -3,6 +3,7 @@ package com.example.android.myapplication.activities;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.example.android.myapplication.classes.DBCreate;
 import com.example.android.myapplication.R;
 import com.example.android.myapplication.dao.DBController;
@@ -23,8 +26,6 @@ import com.example.android.myapplication.dao.DBController;
 public class VisitListActivity extends AppCompatActivity implements AdapterView.OnItemLongClickListener {
     private ListView list;
     private DBController db;
-    private Cursor cursor;
-    ArrayAdapter<String> fileList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,9 @@ public class VisitListActivity extends AppCompatActivity implements AdapterView.
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         String codigo;
-        cursor.moveToPosition(position);
+        Cursor cursor = (Cursor) parent.getItemAtPosition(position);
         codigo = cursor.getString(cursor.getColumnIndexOrThrow(DBCreate.ID));
         openVisitEdit(codigo);
-
         return true;
     }
 
